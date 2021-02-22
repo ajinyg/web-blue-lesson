@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<style type="text/css">
+			.a{
+				width:9.066667rem;
+			}
+		</style>
+	</head>
+	<div style="position:relative;width:1000px;overflow: hidden;">
+		<ul style="width:auto;position:absolute;top:0;left:0;">
+			<li style="width:200px;height:200px;background:red;">1</li>
+			<li style="width:200px;height:200px;background:red;">1</li>
+			<li style="width:200px;height:200px;background:red;">1</li>
+			<li style="width:200px;height:200px;background:red;">1</li>
+			<li style="width:200px;height:200px;background:red;">1</li>
+		</ul>
+	</div>
+	<body>
+		<button onclick="onConnectClick()">搜索</button>
+		<button onclick="onWriteButtonClick()">打印</button>
+		<button onclick="ondisconnect()">断开</button>
+	<script type="text/javascript" src="bluetooth.js"></script>
+	<script type="text/javascript">
+		let buffer_gbk = ["ISAwIDIwMCAyMDAgMzQwIDEKUEFHRS1XSURUSCA3MDAKQk9YIDEwIDAgNTcwIDMyMCAyCkxJTkUgMTAgMjAwIDU3MCAyMDAgMgpMSU5FIDIwMCAxMCAyMDAgMjAwIDIKVEVYVCAyIDAgMjEwIDIwIDIwMTktMDYtMTMgMTU6NTA6MDAKVEVYVCA3IDAgMjEwIDQ4IG51bGwKVEVYVCA3IDAgMjEwIDc0IDI2Mzc1Nzc1NjEwNjI3NzY1OSi52MGqKQpURVhUIDcgMCA0MTAgMTUwIKOkMApURVhUIDcgMCAyMTAgMTA1ICAtIApURVhUIDcgMCAyMCAyMTAgClRFWFQgNyAwIDMwMCAyODAgCkIgUVIgMzAgMzAgTSAyIFUgNwpNQSxudWxsCkVORFFSCkZPUk0KUFJJTlQK"];
+	   /*
+			连接
+	   */
+	   function onConnectClick(){
+		   	Bluetooths.connect()
+			.then(()=>{
+				console.log('蓝牙连接完成...')
+			})
+			.catch((err)=>{
+				console.log(err)
+			})
+	   }
+
+	    /*
+			打印
+	    */
+	    function onWriteButtonClick(){
+
+	    	//单条打印
+	    	Bluetooths.print({
+    			buffer_gbk:buffer_gbk
+    		})
+	    }
+
+	    /*
+			断开连接
+	    */
+	    function ondisconnect(){
+	    	Bluetooths.Disconnect()
+	    }
+	</script>
+	</body>
+</html>
